@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.ajayexamples.com/soap/api/loanServices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.ajayexamples.com/soap/api/loanServices" targetNamespace="http://www.ajayexamples.com/soap/api/loanServices">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ajayexamples.com/soap/api/loanServices">
+
+    <xsd:element name="getLoanEligibilityStatusRequest">
+    	<xsd:complexType>
+    		<xsd:sequence>
+    			<xsd:element name="customerName" type="xsd:string"/>
+    			<xsd:element name="age" type="xsd:int"/>
+    			<xsd:element name="yearlyIncome" type="xsd:long"/>
+    			<xsd:element name="cibilScore" type="xsd:int"/>
+    			<xsd:element name="employmentMode" type="xsd:string"/>
+    	  		</xsd:sequence>
+    	</xsd:complexType>
+    </xsd:element>
+    
+    
+
+    <xsd:element name="getLoanEligibilityStatusResponse">
+    	<xsd:complexType>
+    		<xsd:sequence>
+    			<xsd:element name="isEligible" type="xsd:boolean"/>
+    			<xsd:element name="approvedAmount" type="xsd:long"/>
+    			<xsd:element maxOccurs="unbounded" minOccurs="0" name="criteriaMismatch" type="xsd:string"/>
+    		</xsd:sequence>
+    	</xsd:complexType></xsd:element>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getLoanEligibilityStatusResponse">
+    <wsdl:part element="tns:getLoanEligibilityStatusResponse" name="getLoanEligibilityStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLoanEligibilityStatusRequest">
+    <wsdl:part element="tns:getLoanEligibilityStatusRequest" name="getLoanEligibilityStatusRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LoanEligibiltyPortType">
+    <wsdl:operation name="getLoanEligibilityStatus">
+      <wsdl:input message="tns:getLoanEligibilityStatusRequest" name="getLoanEligibilityStatusRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getLoanEligibilityStatusResponse" name="getLoanEligibilityStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoanEligibiltyPortTypeSoap12" type="tns:LoanEligibiltyPortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getLoanEligibilityStatus">
+      <soap12:operation soapAction="http://www.ajayexamples.com/soap/api/loanServices/getLoanEligibilityStatus"/>
+      <wsdl:input name="getLoanEligibilityStatusRequest">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLoanEligibilityStatusResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LoanEligibiltyPortTypeSoap11" type="tns:LoanEligibiltyPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getLoanEligibilityStatus">
+      <soap:operation soapAction="http://www.ajayexamples.com/soap/api/loanServices/getLoanEligibilityStatus"/>
+      <wsdl:input name="getLoanEligibilityStatusRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLoanEligibilityStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoanEligibiltyPortTypeService">
+    <wsdl:port binding="tns:LoanEligibiltyPortTypeSoap11" name="LoanEligibiltyPortTypeSoap11">
+      <soap:address location="http://localhost:8070/ws/loanServices"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:LoanEligibiltyPortTypeSoap12" name="LoanEligibiltyPortTypeSoap12">
+      <soap12:address location="http://localhost:8070/ws/loanServices"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

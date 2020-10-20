@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.3.2 generiert 
+Siehe <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+Generiert: 2020.10.11 um 11:47:27 PM CEST 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.ajayexamples.com/soap/api/loanServices">
+    <schemaBindings map="false">
+      <package name="com.ajayexamples.soap.api.loanEligibilityObjects"/>
+    </schemaBindings>
+    <bindings scd="tns:getLoanEligibilityStatusRequest">
+      <class ref="com.ajayexamples.soap.api.loanEligibilityObjects.GetLoanEligibilityStatusRequest"/>
+    </bindings>
+    <bindings scd="tns:getLoanEligibilityStatusResponse">
+      <class ref="com.ajayexamples.soap.api.loanEligibilityObjects.GetLoanEligibilityStatusResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+
